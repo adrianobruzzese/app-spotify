@@ -3,28 +3,22 @@ import { Datum } from '../../types/musicTypes';
 
 interface MusicState {
   currentSong: Datum | null;
-  likedSongs: Record<string, boolean>;
 }
 
 const initialState: MusicState = {
   currentSong: null,
-  likedSongs: {},
 };
 
 export const musicSlice = createSlice({
   name: 'music',
   initialState,
   reducers: {
-    setCurrentSong: (state, action: PayloadAction<Datum>) => {
+    setCurrentSong: (state, action: PayloadAction<Datum | null>) => {
       state.currentSong = action.payload;
-    },
-    toggleLikeSong: (state, action: PayloadAction<string>) => {
-      const songId = action.payload;
-      state.likedSongs[songId] = !state.likedSongs[songId];
     },
   },
 });
 
-export const { setCurrentSong, toggleLikeSong } = musicSlice.actions;
+export const { setCurrentSong } = musicSlice.actions;
 
 export default musicSlice.reducer;
