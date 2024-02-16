@@ -34,7 +34,7 @@ const MainPage = () => {
 
   return (
     <div className="mainPage container mt-3">
-      <h2 className="text-start mb-4 ms-4">80's Rock</h2>
+      <h2 className="text-start mb-4">80's Rock</h2>
       <div className="row">
         {kissSongs.map(song => (
           <div key={song.id} className="col-sm-4 col-md-2">
@@ -42,7 +42,7 @@ const MainPage = () => {
           </div>
         ))}
       </div>
-      <h2 className="text-start mb-4 ms-4">Heavy Metal from the 00's</h2>
+      <h2 className="text-start mb-4">Heavy Metal from the 00's</h2>
       <div className="row">
         {slipknotSongs.map(song => (
           <div key={song.id} className="col-sm-4 col-md-2">
@@ -50,7 +50,7 @@ const MainPage = () => {
           </div>
         ))}
       </div>
-      <h2 className="text-start mb-4 ms-4">New Classics</h2>
+      <h2 className="text-start mb-4">New Classics</h2>
       <div className="row">
         {billieEilishSongs.map(song => (
           <div key={song.id} className="col-sm-4 col-md-2">

@@ -7,15 +7,16 @@ interface AlbumCardProps {
 }
 
 const AlbumCard: React.FC<AlbumCardProps> = ({ song, onSelect }) => {
-  return (
-    <div className="col text-center album-card" onClick={() => onSelect(song)}>
-      <img className="img-fluid" src={song.album.cover} alt="track" />
-      <p>
-        Track: "{song.title}"<br />
-        Artist: {song.artist.name}
-      </p>
-    </div>
-  );
-};
+    return (
+      <div className="col text-center album-card" onClick={() => onSelect(song)}>
+        <img className="img-fluid" src={song.album.cover} alt="track" style={{ maxWidth: '180px', height: '180px', borderRadius: '5px' }} />
+        <p>
+          Track: "{song.title}"<br />
+          Artist: {song.artist.name}
+        </p>
+      </div>
+    );
+  };
+  
 
 export default AlbumCard;
