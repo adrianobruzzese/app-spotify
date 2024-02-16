@@ -1,17 +1,16 @@
+import React from 'react';
 import Sidebar from './components/Sidebar';
 import MainPage from './components/MainPage';
-import MusicPlayer from './components/MusicPlayer';
-import './App.css'; 
+import './App.css'; // Importa i tuoi stili globali qui
+
 function App() {
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <Sidebar />
-        <MainPage />
-      </div>
-      <MusicPlayer />
+    <div className="app-container">
+      <Sidebar />
+      <MainPage />
     </div>
   );
 }
 
 export default App;
+

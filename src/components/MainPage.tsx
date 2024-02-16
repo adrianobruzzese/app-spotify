@@ -16,7 +16,7 @@ const MainPage = () => {
         const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`);
         if (response.ok) {
           const data = await response.json();
-          setSongs(data.data.slice(0, 6)); // Prendo i primi 6 risultati
+          setSongs(data.data.slice(0, 5)); // Prendo i primi 5 risultati
         }
       } catch (error) {
         console.error("Error fetching songs for", artist, ":", error);
