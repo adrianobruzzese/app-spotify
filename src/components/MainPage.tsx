@@ -33,7 +33,7 @@ const MainPage = () => {
   };
 
   return (
-    <div className="mainPage container mt-3">
+    <div className="mainPage container mt-4">
       <h2 className="text-start mb-4">80's Rock</h2>
       <div className="row">
         {kissSongs.map(song => (

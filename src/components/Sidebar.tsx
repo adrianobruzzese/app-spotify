@@ -3,7 +3,7 @@ import '../App.css';
 const Sidebar = () => {
   return (
     <div className="col-md-3 col-lg-3 sidebar" id="col-id">
-      <div className="sidebar-start sidebar-end rounded rounded-3 scroll-snap-y">
+      <div className="sidebar-start sidebar-end rounded rounded-3">
         <div className="logo hidden">
           <a href="#">
             <img
