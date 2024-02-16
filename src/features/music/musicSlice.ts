@@ -20,7 +20,7 @@ export const musicSlice = createSlice({
       state.currentSong = action.payload;
     },
     // Alterna lo stato del "mi piace" per una canzone
-    toggleLikeSong: (state, action: PayloadAction<string>) => {
+    toggleLikeSong: (state, action: PayloadAction<number>) => {
       const songId = action.payload;
       state.likedSongs[songId] = !state.likedSongs[songId];
     },

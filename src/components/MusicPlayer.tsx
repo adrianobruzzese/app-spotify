@@ -1,32 +1,39 @@
 import { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../app/store';
+import { toggleLikeSong } from '../features/music/musicSlice'; 
 import '../App.css';
 
 const MusicPlayer = () => {
   const currentSong = useSelector((state: RootState) => state.music.currentSong);
-  const audioRef = useRef<HTMLAudioElement>(new Audio()); //possibile soluzione trovata su internet ma non mi convince, approfondirò nel w.e. perché non funziona
+  const likedSongs = useSelector((state: RootState) => state.music.likedSongs);
+  const dispatch = useDispatch();
+  const audioRef = useRef<HTMLAudioElement>(new Audio());
 
   useEffect(() => {
-    // Verifica che currentSong esista prima di tentare di assegnare src e avviare la riproduzione?
     if (currentSong && currentSong.preview) {
-      // TypeScript ora è sicuro che audioRef.current non sia null grazie all'inizializzazione di useRef? Boh mi fido di stackoverflow e chatgpt, approfondirò
       audioRef.current.src = currentSong.preview;
       audioRef.current.play().catch(error => console.log('Playback was prevented:', error));
     }
   }, [currentSong]);
 
   const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (audioRef.current.paused) {
-        audioRef.current.play().catch(error => console.error('Playback was prevented:', error));
-      } else {
-        audioRef.current.pause();
-      }
+    if (audioRef.current.paused) {
+      audioRef.current.play().catch(error => console.error('Playback was prevented:', error));
+    } else {
+      audioRef.current.pause();
     }
   };
 
-   if (!currentSong) {
+  const handleLike = () => {
+    if (currentSong) {
+      dispatch(toggleLikeSong(currentSong.id));
+    }
+  };
+
+  const isLiked = currentSong && likedSongs[currentSong.id];
+
+  if (!currentSong) {
     return null; // Non renderizzare il player se non c'è una canzone selezionata
   }
 
@@ -35,7 +42,6 @@ const MusicPlayer = () => {
       <div className="song-bar">
         <div className="song-infos">
           <div className="image-container">
-            {/* Utilizza la copertina dell'album se disponibile */}
             <img src={currentSong.album.cover} alt={currentSong.title} />
           </div>
           <div className="song-description">
@@ -44,25 +50,23 @@ const MusicPlayer = () => {
           </div>
         </div>
         <div className="icons">
-          <i className="bi bi-heart"></i>
+          <i className={`bi ${isLiked ? 'bi-heart-fill' : 'bi-heart'}`} onClick={handleLike}></i>
           <i className="bi bi-fullscreen-exit"></i>
         </div>
       </div>
       <div className="progress-controller">
-        {/* Control Buttons */}
         <div className="control-buttons">
           <i className="bi bi-shuffle"></i>
           <i className="bi bi-skip-backward-fill"></i>
-          {/* Mi sarebbe piaciuto modellare questo bottone, ma non ho fatto in tempo */}
-               <button onClick={togglePlayPause}>
-        {audioRef.current && !audioRef.current.paused ? 'Pause' : 'Play'}
-      </button>
+          <button onClick={togglePlayPause}>
+            {audioRef.current && !audioRef.current.paused ? 'Pause' : 'Play'}
+          </button> 
+          {/* mi sarebbe piaciuto modellare questo bottone play/pause, ma il tempo mi è stato nemico */}
           <i className="bi bi-skip-forward-fill"></i>
           <i className="bi bi-repeat"></i>
         </div>
         {/* Placeholder per la barra di progresso e il controllo del volume per mancanza di tempo */}
       </div>
-
     </div>
   );
 };
