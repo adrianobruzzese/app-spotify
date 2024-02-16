@@ -3,7 +3,6 @@ const Sidebar = () => {
   return (
     <div className="col-md-3 col-lg-3 sidebar" id="col-id">
       <div className="sidebar-start sidebar-end rounded rounded-3 scroll-snap-y">
-        {/* Sezione Logo esistente */}
         <div className="logo hidden">
           <a href="#">
             <img
@@ -13,7 +12,7 @@ const Sidebar = () => {
           </a>
         </div>
 
-        {/* Prima Sezione di Navigazione esistente */}
+        {/* Sezione di Navigazione dal progetto bw */}
         <div className="navigation">
           <ul className="fixed-bottom-bar">
             <li>

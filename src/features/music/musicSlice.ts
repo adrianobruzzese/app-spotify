@@ -19,7 +19,7 @@ export const musicSlice = createSlice({
     setCurrentSong: (state, action: PayloadAction<Datum | null>) => {
       state.currentSong = action.payload;
     },
-    // Alterna lo stato del "mi piace" per una canzone
+    // Alterna lo stato del "mi piace" per una canzone cliccando su 'bi-heart-fill' del MusicPlayer
     toggleLikeSong: (state, action: PayloadAction<number>) => {
       const songId = action.payload;
       state.likedSongs[songId] = !state.likedSongs[songId];
