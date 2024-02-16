@@ -1,39 +1,57 @@
-/* stili personalizzati */
+/* Stili personalizzati */
 
+/* font ufficiale Spotify */
 @import url(//db.onlinewebfonts.com/c/860c3ec7bbc5da3e97233ccecafe512e?family=Circular+Std+Book);
 
-* {
-  padding: 0;
+html,
+body,
+#root {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
   font-family: 'circular std book', sans-serif;
 }
+
 body {
   background-color: #121212;
   color: #ffffff;
 }
 
-/* sidebar */
-
-.sidebar {
-  background-color: #121212;
-  color: #b3b3b3;
-  padding: 24px;
-  height: 100%;
+.app-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
 }
 
+/* Stili per Sidebar */
+.sidebar {
+  width: 300px; 
+  background-color: #121212;
+  color: #b3b3b3;
+  overflow-y: hidden;
+  flex-shrink: 0;
+}
+
+/* media queries */
 @media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 12px;
+  }
+
   .hidden {
     display: none;
-  }
-  .sidebar {
-    /* max-width: 1px; */
-    background-color: #121212;
-    padding: 0;
   }
 
   .fixed-bottom-bar {
     position: fixed;
-    bottom: -16px;
+    bottom: 0;
     left: 0;
     width: 100%;
     background-color: #121212;
@@ -54,23 +72,27 @@ body {
     color: #ffffff;
   }
 }
+
 .sidebar .logo img {
-  margin-left: 1rem;
-  width: 120px;
+  width: 130px;
 }
+
 .navigation:nth-of-type(3) {
   border-bottom: 0.5px solid grey;
 }
+
 .sidebar .navigation ul {
   list-style: none;
   margin-top: 15px;
 }
+
 .sidebar .navigation ul li a {
   color: #b3b3b3;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1rem;
 }
+
 .sidebar .navigation ul li a:hover,
 .sidebar .navigation ul li a:active,
 .sidebar .navigation ul li a:focus,
@@ -83,16 +105,19 @@ body {
 .sidebar .navigation ul li .bi {
   font-size: 1.2rem;
 }
+
 .sidebar .playlist ul {
   list-style: none;
   margin-top: 15px;
 }
+
 .sidebar .playlist ul li a {
   color: #b3b3b3;
   font-weight: 500;
   text-decoration: none;
   font-size: 1rem;
 }
+
 .sidebar .playlist ul li a:hover,
 .sidebar .playlist ul li a:active,
 .sidebar .playlist ul li a:focus {
@@ -106,6 +131,7 @@ body {
   overflow-y: hidden;
   transition: overflow-y 2s ease;
 }
+
 .scroll-snap-y:hover {
   overflow-y: scroll;
 }
@@ -114,6 +140,7 @@ body {
   scroll-snap-align: start;
   margin-bottom: 60px;
 }
+
 .scroll-snap-y::-webkit-scrollbar {
   width: 5px;
 }
@@ -129,26 +156,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
 
 .logo {
   height: 6em;

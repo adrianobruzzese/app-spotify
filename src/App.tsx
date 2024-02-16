@@ -1,7 +1,6 @@
-import React from 'react';
 import Sidebar from './components/Sidebar';
 import MainPage from './components/MainPage';
-import './App.css'; // Importa i tuoi stili globali qui
+import './App.css'; 
 
 function App() {
   return (
@@ -13,4 +12,3 @@ function App() {
 }
 
 export default App;
-
